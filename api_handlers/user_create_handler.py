@@ -33,6 +33,7 @@ class UserCreateHandler(RequestHandler):
             data['birthday'],
             data['photo']
         )
+        print(query)
         self.db.insert_query(query)
         #self.write(json.dumps({'result': 'ok'}))
 
