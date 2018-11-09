@@ -10,14 +10,8 @@ class UserCreateHandler(RequestHandler):
         self.post()
 
     def post(self):
-        print(self.request.body)
         data = json.loads(self.request.body)
-        print(data)
-        query = """
-        insert into users(user_id, first_name, last_name, birthday, photo) 
-        values({user_id}, '{first_name}', '{last_name}', '{birthday}', '{photo}');
-            """\
-            .format(**data)
+        query = "select * from users where user_id={'user_id'}"
         print(query)
         self.db.insert_query(query)
         self.write(json.dumps({'result': 'ok'}))

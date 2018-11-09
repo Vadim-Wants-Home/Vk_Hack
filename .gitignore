@@ -1,0 +1,6 @@
+.idea
+*.pyc
+*__pycache__
+start.sh
+tmp
+venv
