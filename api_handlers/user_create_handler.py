@@ -35,5 +35,5 @@ class UserCreateHandler(RequestHandler):
         )
         print(query)
         self.db.insert_query(query)
-        #self.write(json.dumps({'result': 'ok'}))
+        self.write(json.dumps({'result': 'ok'}))
 
