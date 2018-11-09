@@ -21,10 +21,10 @@ class UserCreateHandler(RequestHandler):
             ) 
             values(
             {0}, 
-            {1}, 
-            {2}, 
-            {3}, 
-            {4}
+            '{1}', 
+            '{2}', 
+            '{3}', 
+            '{4}'
             );
             """.format(
             data['user_id'],
