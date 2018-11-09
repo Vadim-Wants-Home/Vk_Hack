@@ -3,8 +3,8 @@ import json
 
 
 class UserCreateHandler(RequestHandler):
-    def initialize(self, database):
-        self.db = database
+    def initialize(self, db):
+        self.db = db
 
     def get(self):
         self.post()
