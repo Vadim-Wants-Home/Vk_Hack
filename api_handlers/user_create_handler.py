@@ -7,4 +7,5 @@ class UserCreateHandler(RequestHandler):
         self.post()
 
     def post(self):
-        self.write(json.dumps({'result': 'ok'}))
+        self.write(self.request.body)
+        #self.write(json.dumps({'result': 'ok'}))
