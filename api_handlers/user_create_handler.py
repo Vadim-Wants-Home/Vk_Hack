@@ -7,7 +7,7 @@ class UserCreateHandler(RequestHandler):
         self.post()
 
     def post(self):
-        data = self.request.body
+        data = json.loads(self.request.body)
         print(data['user_id'])
         query = """
         insert into users(
