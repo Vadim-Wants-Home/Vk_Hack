@@ -3,12 +3,14 @@ import json
 
 
 class UserCreateHandler(RequestHandler):
+    def initialize(self, database):
+        self.db = database
+
     def get(self):
         self.post()
 
     def post(self):
         data = json.loads(self.request.body)
-        print(data['user_id'])
         query = """
         insert into users(
             user_id, 
@@ -18,14 +20,19 @@ class UserCreateHandler(RequestHandler):
             photo
             ) 
             values(
-            2, 
-            'slava', 
-            'vushev', 
-            '20000505', 
-            'user1.jpg'
+            {0}, 
+            {1}, 
+            {2}, 
+            {3}, 
+            {4}
             );
-            """
-        print(query)
-        self.write(self.request.body)
+            """.format(
+            data['user_id'],
+            data['first_name'],
+            data['last_name'],
+            data['birthday'],
+            data['photo']
+        )
+        self.db.insert_query(query)
         #self.write(json.dumps({'result': 'ok'}))
 
