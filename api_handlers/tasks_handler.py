@@ -1,26 +1,18 @@
 import json
 
 from tornado.web import RequestHandler
+from sql_scripts.sql_worker import SqlDatasetWorker
 
 import db_utils
 
 
 class TasksRequestHandler(RequestHandler):
-    def get(self, owner=None, id=None):
-        self.post(owner, id)
 
-    def post(self, owner=None, id=None):
-        where_statement = ""
-        if owner == "users":
-            where_statement += " where t.user_id = {}".format(id)
-        elif owner == 'shelters':
-            where_statement += " where t.shelter_id = {}".format(id)
-        elif owner == 'representatives':
-            where_statement += " where t.creator_id = {}".format(id)
+    def get(self):
+        self.post()
 
-        conn = db_utils.get_connection()
-        rows = conn.query(
-            """
+    def post(self):
+        query = """
                 select 
                     t.id, 
                     t.name,
@@ -42,12 +34,13 @@ class TasksRequestHandler(RequestHandler):
                 from tasks as t
                 join representatives as r on r.user_id = t.creator_id
                 join shelters as s on s.id = t.shelter_id;
-                {0}
-            """.format(where_statement)
-        )
+            """
+
+        rows = SqlDatasetWorker().select_query(query)
 
         response_data = []
         for row in rows:
+            print(row)
             response_data.append({
                 'id': row.id,
                 'name': row.name,

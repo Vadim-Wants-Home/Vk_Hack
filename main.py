@@ -6,6 +6,7 @@ import sys
 from api_handlers.user_create_handler import UserCreateHandler
 from sql_scripts.sql_worker import SqlDatasetWorker
 from json_working.json_working import get_json_data
+from api_handlers.tasks_by_id_handler import TasksByIdDHandler
 # from api_handlers.user_create_handler import UserCreateHandler
 from api_handlers.tasks_handler import TasksRequestHandler
 
@@ -19,7 +20,7 @@ def make_app():
         (r"/", MainHandler),
         (r"/api/users/create", UserCreateHandler),
         (r'/api/tasks', TasksRequestHandler),
-        (r'/api/(?P<owner>[^/]+)/(?P<id>[^/]+)/tasks', TasksRequestHandler),
+        (r'/api/(?P<owner>[^/]+)/(?P<id>[^/]+)/tasks', TasksByIdDHandler),
      #   (r'/api/shelters', TasksRequestHandler),
      #   (r'/api/shelters/(?P<id>[^/]+)', ShelterRequestHandle),
     ])

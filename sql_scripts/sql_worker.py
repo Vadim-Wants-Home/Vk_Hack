@@ -137,3 +137,9 @@ class SqlDatasetWorker:
             1);
             """
         )
+
+    def insert_query(self, query):
+        pass
+
+    def select_query(self, query):
+        return db_utils.get_connection().query(query)
