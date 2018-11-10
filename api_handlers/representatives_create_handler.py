@@ -12,18 +12,23 @@ class RepresentativesCreateHandler(RequestHandler):
     def get_shelter_id(self, conn, code):
         rows = conn.query(
             """
-                select *
-                from codes as s
-                {0};
-            """.format(where_statement)
+                select shelter_id
+                from codes
+                where code={0};
+            """.format(code)
         )
+        return rows[0]
 
     def post(self):
         conn = db_utils.get_connection()
 
         try:
             data = json.loads(self.request.body)
-            data['shelter_id'] = self.get_shelter_id(conn, data['code'])
+            try:
+                data['shelter_id'] = self.get_shelter_id(conn, data['code'])
+            except:
+                self.write(json.dumps({'result': 'fail', 'error': 1, 'error_description': "Your code is not a valid representative code"}))
+                return
             birthday = ''
             for el in reversed(data['birthday'].split('.')):
                 birthday += '-' + el

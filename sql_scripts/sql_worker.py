@@ -71,13 +71,26 @@ class SqlDatasetWorker:
             );"""
         )
 
+        conn.execute(
+            """
+            create table if not exists representative_codes (
+            id int auto_increment,
+            shelter_id int,
+            code int,
+            primary key (id),
+            foreign key (shelter_id) references shelters(id)
+            )
+            """
+        )
+
     @staticmethod
     def uninstall():
         conn = db_utils.get_connection()
+        conn.execute("drop table if exists representative_codes")
         conn.execute("drop table if exists tasks")
         conn.execute("drop table if exists representatives")
-        conn.execute("drop table if exists shelters")
         conn.execute("drop table if exists users")
+        conn.execute("drop table if exists shelters")
 
     @staticmethod
     def sample_data_insert():
@@ -126,8 +139,8 @@ class SqlDatasetWorker:
 
         conn.execute(
             """
-            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id, code) VALUES 
-            (1, 'name', 'surname', '2018-09-09', 'photka.png', 1, 654321)
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
+            (1, 'name', 'surname', '2018-09-09', 'photka.png', 1)
             """
         )
 
@@ -193,4 +206,12 @@ class SqlDatasetWorker:
             1,
             2,
             68265443);
+        """)
+
+        conn.execute("""
+        insert into representative_codes(shelter_id, code) values (1, 111111)
+        """)
+
+        conn.execute("""
+        insert into representative_codes(shelter_id, code) values (1, 111112)
         """)
