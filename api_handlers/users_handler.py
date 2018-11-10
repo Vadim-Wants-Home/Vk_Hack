@@ -24,7 +24,7 @@ class UsersRequestHandler(RequestHandler):
         )
 
         for row in rows:
-            row['birthday'] = row['birthday'].strftime("%d/%m/%y")
+            row['birthday'] = row['birthday'].strftime("%Y-%m-%d")
 
         self.finish({
             'result': 'ok',

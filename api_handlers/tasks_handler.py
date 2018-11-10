@@ -61,7 +61,7 @@ class TasksRequestHandler(RequestHandler):
                     'user_id': row.r_user_id,
                     'first_name': row.r_first_name,
                     'last_name': row.r_last_name,
-                    'birthday': row.r_birthday.strftime("%d/%m/%y"),
+                    'birthday': row.r_birthday.strftime("%Y-%m-%d"),
                     'photo': row.r_photo
                 },
 
