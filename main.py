@@ -3,6 +3,7 @@ import tornado.web
 import torndb
 import sys
 
+from api_handlers.shelters_handler import SheltersRequestHandler
 from api_handlers.user_create_handler import UserCreateHandler
 from sql_scripts.sql_worker import SqlDatasetWorker
 from json_working.json_working import get_json_data
@@ -20,8 +21,8 @@ def make_app():
         (r"/api/users/create", UserCreateHandler),
         (r'/api/tasks', TasksRequestHandler),
         (r'/api/(?P<owner>[^/]+)/(?P<id>[^/]+)/tasks', TasksRequestHandler),
-     #   (r'/api/shelters', TasksRequestHandler),
-     #   (r'/api/shelters/(?P<id>[^/]+)', ShelterRequestHandle),
+        (r'/api/shelters', SheltersRequestHandler),
+        (r'/api/shelters/(?P<id>[^/]+)', SheltersRequestHandler),
     ])
 
 

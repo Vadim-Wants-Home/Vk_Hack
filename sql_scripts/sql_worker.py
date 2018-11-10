@@ -137,3 +137,24 @@ class SqlDatasetWorker:
             1);
             """
         )
+
+
+        conn.execute("""
+            insert
+            into
+            shelters(name, address, photo, site)
+            VALUES
+            ('Hello', 'Peterhof 64 corp2, 2342/34', 'example.com', 'asdf.ru');
+        """
+        )
+
+        conn.execute("""
+        insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id) VALUES
+            ('Third',
+            current_timestamp,
+            0,
+            'very very very very very very long desc desc desc desc of this task',
+            1,
+            1,
+            2);
+        """)

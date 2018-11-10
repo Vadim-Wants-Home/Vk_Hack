@@ -41,8 +41,8 @@ class TasksRequestHandler(RequestHandler):
                     s.site as s_site
                 from tasks as t
                 join representatives as r on r.user_id = t.creator_id
-                join shelters as s on s.id = t.shelter_id;
-                {0}
+                join shelters as s on s.id = t.shelter_id
+                {0};
             """.format(where_statement)
         )
 

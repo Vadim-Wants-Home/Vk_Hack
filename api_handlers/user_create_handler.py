@@ -23,7 +23,8 @@ class UserCreateHandler(RequestHandler):
 
             conn.execute(u"""
             insert into users(user_id, first_name, last_name, birthday, photo)
-            values({user_id}, '{first_name}', '{last_name}', '{birthday}', '{photo}');
+            values({user_id}, '{first_name}', '{last_name}', '{birthday}', '{photo}')
+            on duplicate key update users set first_name='{first_name'}, last_name='{last_name}';
                 """.format(**data))
             self.write(json.dumps({'result': 'ok'}))
         except Exception, e:
