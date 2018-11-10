@@ -13,11 +13,11 @@ class RepresentativesCreateHandler(RequestHandler):
         rows = conn.query(
             """
                 select shelter_id
-                from codes
+                from representative_codes
                 where code={0};
             """.format(code)
         )
-        return rows[0]
+        return rows[0].shelter_id
 
     def post(self):
         conn = db_utils.get_connection()
@@ -25,7 +25,8 @@ class RepresentativesCreateHandler(RequestHandler):
         try:
             data = json.loads(self.request.body)
             try:
-                data['shelter_id'] = self.get_shelter_id(conn, data['code'])
+                code = data['code']
+                data['shelter_id'] = self.get_shelter_id(conn, code)
             except:
                 self.write(json.dumps({'result': 'fail', 'error': 1, 'error_description': "Your code is not a valid representative code"}))
                 return
