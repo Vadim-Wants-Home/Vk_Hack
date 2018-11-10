@@ -28,5 +28,5 @@ class UsersRequestHandler(RequestHandler):
 
         self.finish({
             'result': 'ok',
-            'data': json.dumps(rows[0])
+            'data': json.dumps(rows[0] if id else rows)
         })
