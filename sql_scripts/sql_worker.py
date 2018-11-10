@@ -62,6 +62,7 @@ class SqlDatasetWorker:
             user_id int,
             creator_id int,
             shelter_id int,
+            done_key int,
             primary key(id),
             foreign key (user_id) references users(user_id),
             foreign key (creator_id) references representatives(user_id),
@@ -114,27 +115,29 @@ class SqlDatasetWorker:
 
         conn.execute(
             """
-            insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id) VALUES 
+            insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
             ('Yow Task First', 
             current_timestamp, 
             0, 
             'very very very very very very long desc desc desc desc of this task',
             1,
             1,
-            1);
+            1,
+            45678765);
             """
         )
 
         conn.execute(
             """
-            insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id) VALUES 
+            insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
             ('Yow Second Task', 
             current_timestamp, 
             0, 
             'very very very very very very long desc desc desc desc of this task again',
             1,
             1,
-            1);
+            1,
+            765876894);
             """
         )
 
@@ -149,12 +152,13 @@ class SqlDatasetWorker:
         )
 
         conn.execute("""
-        insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id) VALUES
+        insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES
             ('Third',
             current_timestamp,
             0,
             'very very very very very very long desc desc desc desc of this task',
             1,
             1,
-            2);
+            2,
+            68265443);
         """)

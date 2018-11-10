@@ -27,6 +27,7 @@ class TasksRequestHandler(RequestHandler):
                     t.deadline, 
                     t.type, 
                     t.description,
+                    t.done_key,
                     
                     r.user_id as r_user_id,
                     r.first_name as r_first_name,
@@ -54,6 +55,7 @@ class TasksRequestHandler(RequestHandler):
                 'deadline': row.deadline.strftime("%s"),
                 'type': row.type,
                 'description': row.description,
+                'done_key': row.done_key,
 
                 'representative': {
                     'user_id': row.r_user_id,
