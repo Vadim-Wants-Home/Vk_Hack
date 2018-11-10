@@ -11,12 +11,12 @@ class TasksRequestHandler(RequestHandler):
 
     def post(self, owner=None, id=None):
         where_statement = ""
-        # if owner == "users":
-        #     where_statement += " where t.user_id = %s"
-        # elif owner == 'shelters':
-        #     where_statement += " where t.shelter_id = %s"
-        # elif owner == 'representatives':
-        #     where_statement += " where t.creator_id = %s"
+        if owner == "users":
+            where_statement += " where t.user_id = {}".format(id)
+        elif owner == 'shelters':
+            where_statement += " where t.shelter_id = {}".format(id)
+        elif owner == 'representatives':
+            where_statement += " where t.creator_id = {}".format(id)
 
         conn = db_utils.get_connection()
         rows = conn.query(
@@ -42,7 +42,8 @@ class TasksRequestHandler(RequestHandler):
                 from tasks as t
                 join representatives as r on r.user_id = t.creator_id
                 join shelters as s on s.id = t.shelter_id;
-            """
+                {0}
+            """.format(where_statement)
         )
 
         response_data = []

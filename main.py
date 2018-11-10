@@ -20,6 +20,8 @@ def make_app():
         (r"/api/users/create", UserCreateHandler),
         (r'/api/tasks', TasksRequestHandler),
         (r'/api/(?P<owner>[^/]+)/(?P<id>[^/]+)/tasks', TasksRequestHandler),
+     #   (r'/api/shelters', TasksRequestHandler),
+     #   (r'/api/shelters/(?P<id>[^/]+)', ShelterRequestHandle),
     ])
 
 
