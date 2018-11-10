@@ -4,6 +4,7 @@ import torndb
 import sys
 
 from api_handlers.shelters_handler import SheltersRequestHandler
+from api_handlers.sheter_representatives import ShelterRepresentativesRequestHandler
 from api_handlers.user_create_handler import UserCreateHandler
 from api_handlers.users_handler import UsersRequestHandler
 from sql_scripts.sql_worker import SqlDatasetWorker
@@ -27,7 +28,8 @@ def make_app():
         (r'/api/shelters/(?P<id>[^/]+)', SheltersRequestHandler),
         (r'/api/users', UsersRequestHandler),
         (r'/api/users/(?P<id>[^/]+)', UsersRequestHandler),
-        (r'/api/representatives/create', RepresentativesCreateHandler)
+        (r'/api/representatives/create', RepresentativesCreateHandler),
+        (r'/api/shelters/(?P<id>[^/]+)/representatives', ShelterRepresentativesRequestHandler)
     ])
 
 
