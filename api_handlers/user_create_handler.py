@@ -13,7 +13,14 @@ class UserCreateHandler(RequestHandler):
 
         try:
             data = json.loads(self.request.body)
-            conn.execute("""
+            birthday = ''
+            for el in reversed(data['birthday'].split('.')):
+                birthday += '-' + el
+            birthday = birthday[1:]
+
+            data['birthday'] = birthday
+
+            conn.execute(u"""
             insert into users(user_id, first_name, last_name, birthday, photo)
             values({user_id}, '{first_name}', '{last_name}', '{birthday}', '{photo}');
                 """.format(**data))

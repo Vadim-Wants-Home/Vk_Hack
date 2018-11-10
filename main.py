@@ -4,11 +4,10 @@ import torndb
 import sys
 
 from api_handlers.user_create_handler import UserCreateHandler
-from sql_scripts.sql_worker import SqlWorker
+from sql_scripts.sql_worker import SqlDatasetWorker
 from json_working.json_working import get_json_data
 # from api_handlers.user_create_handler import UserCreateHandler
 from api_handlers.tasks_handler import TasksRequestHandler
-
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -25,6 +24,9 @@ def make_app():
 
 
 if __name__ == "__main__":
+    SqlDatasetWorker.uninstall()
+    SqlDatasetWorker.install()
+    SqlDatasetWorker.sample_data_insert()
     #
     # db.uninstall()
     # db.install()

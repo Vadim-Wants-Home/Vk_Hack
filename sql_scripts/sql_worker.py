@@ -2,16 +2,18 @@ import sys
 
 import MySQLdb
 
-class SqlWorker:
-    def connect(self, args):
-        self.db = MySQLdb.connect(host=args[0], user=args[1], passwd=args[2], db=args[3])
-        return self
+import db_utils
 
-    def get_connection(self):
-        return self.db
 
-    def install(self):
-        self.db.query(
+class SqlDatasetWorker:
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def install():
+        conn = db_utils.get_connection()
+
+        conn.execute(
             """
             create table if not exists users (
                 user_id int unique ,
@@ -24,7 +26,7 @@ class SqlWorker:
             """
         )
 
-        self.db.query("""
+        conn.execute("""
             CREATE TABLE if not exists shelters (
                 id int auto_increment,
                 name varchar(255),
@@ -35,7 +37,7 @@ class SqlWorker:
             ); 
         """)
 
-        self.db.query(
+        conn.execute(
             """
             create table if not exists representatives (
                 user_id int unique,
@@ -50,7 +52,7 @@ class SqlWorker:
             """
         )
 
-        self.db.query(
+        conn.execute(
             """CREATE TABLE if not exists tasks (
             id int auto_increment,
             name varchar(255),
@@ -67,25 +69,19 @@ class SqlWorker:
             );"""
         )
 
+    @staticmethod
+    def uninstall():
+        conn = db_utils.get_connection()
+        conn.execute("drop table if exists tasks")
+        conn.execute("drop table if exists representatives")
+        conn.execute("drop table if exists shelters")
+        conn.execute("drop table if exists users")
 
+    @staticmethod
+    def sample_data_insert():
+        conn = db_utils.get_connection()
 
-    def uninstall(self):
-        self.db.query("drop table if exists tasks")
-        self.db.query("drop table if exists representatives")
-        self.db.query("drop table if exists shelters")
-        self.db.query("drop table if exists users")
-
-    def sample_queries(self):
-        cursor = self.db.cursor()
-        cursor.execute("""SELECT * FROM users""")
-
-        results = cursor.fetchall()
-
-        for t in results:
-            print(t)
-
-    def sample_data_insert(self):
-        self.db.cursor().execute(
+        conn.execute(
             "insert into users("
             "user_id, "
             "first_name, "
@@ -102,25 +98,21 @@ class SqlWorker:
             ")"
         )
 
-        self.db.cursor().execute(
+        conn.execute(
             """
             insert into shelters (name, address, photo, site) VALUES 
             ('Yow', 'Saint Petersubtg 46, 2342/34', 'brokenlink', 'brokensitelink');
             """
         )
 
-        self.db.commit()
-
-        self.db.cursor().execute(
+        conn.execute(
             """
             insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
-            (1, 'name', 'surname', '02948435', 'photka.png', 1)
+            (1, 'name', 'surname', '2018-09-09', 'photka.png', 1)
             """
         )
 
-        self.db.commit()
-
-        self.db.cursor().execute(
+        conn.execute(
             """
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id) VALUES 
             ('Yow Task First', 
@@ -133,7 +125,7 @@ class SqlWorker:
             """
         )
 
-        self.db.cursor().execute(
+        conn.execute(
             """
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id) VALUES 
             ('Yow Second Task', 
@@ -145,21 +137,3 @@ class SqlWorker:
             1);
             """
         )
-
-        self.db.commit()
-
-    def insert_query(self, query):
-        self.db.cursor().execute(query)
-        self.db.commit()
-
-    def select_query(self, query):
-        cursor = self.db.cursor()
-        cursor.execute(query)
-        return cursor.fetchall()
-
-if __name__ == "__main__":
-    db = SqlWorker().connect(sys.argv[1:])
-    # db.uninstall()
-    # db.install()
-    # db.sample_data_insert()
-    db.sample_queries()
