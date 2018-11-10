@@ -37,10 +37,6 @@ if __name__ == "__main__":
     SqlDatasetWorker.uninstall()
     SqlDatasetWorker.install()
     SqlDatasetWorker.sample_data_insert()
-    #
-    # db.uninstall()
-    # db.install()
-    # db.sample_data_insert()
 
     app = make_app()
     app.listen(get_json_data('server.json')['port'])
