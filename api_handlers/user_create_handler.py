@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8
+
 from tornado.web import RequestHandler
 import json
 
@@ -11,7 +14,7 @@ class UserCreateHandler(RequestHandler):
 
     def post(self):
         data = json.loads(self.request.body)
-        query = """
+        query = u"""
         insert into users(user_id, first_name, last_name, birthday, photo) 
         values({user_id}, '{first_name}', '{last_name}', '{birthday}', '{photo}');
             """\
