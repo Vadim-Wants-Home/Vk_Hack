@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys
 
 import MySQLdb
@@ -133,21 +135,21 @@ class SqlDatasetWorker:
         conn.execute(
             """
             insert into shelters (name, address, photo, site) VALUES 
-            ('Yow', 'Saint Petersubtg 46, 2342/34', 'http://img.happy-giraffe.ru/v2/thumbs/e26e4ffdce15f4bc6711c767ffa68dac/69/03/e9ddc9480710e0d0eed71e0397bd.jpg', 'http://example.com');
+            ('Yow', 'Дворцовая площадь, 2', 'http://img.happy-giraffe.ru/v2/thumbs/e26e4ffdce15f4bc6711c767ffa68dac/69/03/e9ddc9480710e0d0eed71e0397bd.jpg', 'http://example.com');
             """
         )
 
         conn.execute(
             """
             insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
-            (1, 'name', 'surname', '2018-09-09', 'https://rozetked.me/images/uploads/dwoilp3BVjlE.jpg', 1)
+            (1, 'Cat', 'Barsik', '2018-09-09', 'https://rozetked.me/images/uploads/dwoilp3BVjlE.jpg', 1)
             """
         )
 
         conn.execute(
             """
             insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
-            (2, 'first', 'representative', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 1)
+            (2, 'Cat', 'Musya', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 1)
             """
         )
 
@@ -197,7 +199,7 @@ class SqlDatasetWorker:
         conn.execute("""
             insert into shelters(name, address, photo, site)
             VALUES
-            ('Hello', 'Peterhof 64 corp2, 2342/34', 'https://www.w3schools.com/w3css/img_lights.jpg', 'asdf.ru');
+            ('Hello', 'Ботаническая, 66', 'https://www.w3schools.com/w3css/img_lights.jpg', 'asdf.ru');
         """
         )
 
@@ -216,14 +218,14 @@ class SqlDatasetWorker:
         conn.execute(
             """
             insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
-            (3, 'second', 'repro', '2018-09-09', 'http://www.sncmedia.ru/upload/iblock/1bd/1bd85c62deedf241663b309d3790be17_w877_h500_crp.jpg', 1)
+            (3, 'Bill Gates', 'repro', '2018-09-09', 'http://www.sncmedia.ru/upload/iblock/1bd/1bd85c62deedf241663b309d3790be17_w877_h500_crp.jpg', 1)
             """
         )
 
         conn.execute(
             """
             insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
-            (4, 'third', 'repro', '2018-09-08', 'http://droplak.ru/wp-content/uploads/2016/04/3-8.jpg', 2)
+            (4, 'John', 'Doe', '2018-09-08', 'http://droplak.ru/wp-content/uploads/2016/04/3-8.jpg', 2)
             """
         )
 
