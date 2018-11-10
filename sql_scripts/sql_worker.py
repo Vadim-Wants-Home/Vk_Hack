@@ -149,7 +149,7 @@ class SqlDatasetWorker:
             into
             shelters(name, address, photo, site)
             VALUES
-            ('Hello', 'Peterhof 64 corp2, 2342/34', 'example.com', 'asdf.ru');
+            ('Hello', 'Peterhof 64 corp2, 2342/34', 'https://www.w3schools.com/w3css/img_lights.jpg', 'asdf.ru');
         """
         )
 
