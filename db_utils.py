@@ -1,15 +1,12 @@
 import logging
+from json_working.json_working import get_json_data
 
 import torndb
 
-host = "db"
-db = "testvk"
-user = "root"
-password = "password"
-
 def get_connection():
     try:
-        connection = torndb.Connection(host, db, user, password)
+        data = get_json_data('db.json')
+        connection = torndb.Connection(data['host'], data['db'], data['user'], data['password'])
         connection.execute('set time_zone=SYSTEM')
         connection.execute('SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci')
 
