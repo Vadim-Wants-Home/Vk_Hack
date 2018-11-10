@@ -1,6 +1,8 @@
 .idea
 *.pyc
 *__pycache__
+db.json
+server.json
 start.sh
 tmp
 venv

@@ -1,26 +1,31 @@
-#!/usr/bin/env python
-# -*- coding: utf-8
+
+import logging
 
 from tornado.web import RequestHandler
 import json
-
+import db_utils
 
 class UserCreateHandler(RequestHandler):
-    def initialize(self, db):
-        self.db = db
-
     def get(self):
         self.post()
 
     def post(self):
-        data = json.loads(self.request.body)
-        query = u"""
-        insert into users(user_id, first_name, last_name, birthday, photo) 
-        values({user_id}, '{first_name}', '{last_name}', '{birthday}', '{photo}');
-            """\
-            .format(**data)
+        conn = db_utils.get_connection()
+
         try:
-            self.db.insert_query(query)
+            data = json.loads(self.request.body)
+            birthday = ''
+            for el in reversed(data['birthday'].split('.')):
+                birthday += '-' + el
+            birthday = birthday[1:]
+
+            data['birthday'] = birthday
+
+            conn.execute(u"""
+            insert into users(user_id, first_name, last_name, birthday, photo)
+            values({user_id}, '{first_name}', '{last_name}', '{birthday}', '{photo}');
+                """.format(**data))
             self.write(json.dumps({'result': 'ok'}))
-        except:
+        except Exception, e:
+            logging.warn('cannot insert data: ' + str(e))
             self.write(json.dumps({'result': 'fail'}))
