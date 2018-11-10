@@ -103,7 +103,7 @@ class SqlDatasetWorker:
         conn.execute(
             """
             insert into shelters (name, address, photo, site) VALUES 
-            ('Yow', 'Saint Petersubtg 46, 2342/34', 'brokenlink', 'brokensitelink');
+            ('Yow', 'Saint Petersubtg 46, 2342/34', 'http://img.happy-giraffe.ru/v2/thumbs/e26e4ffdce15f4bc6711c767ffa68dac/69/03/e9ddc9480710e0d0eed71e0397bd.jpg', 'http://example.com');
             """
         )
 
