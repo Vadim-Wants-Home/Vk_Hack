@@ -21,6 +21,7 @@ class SqlDatasetWorker:
                 last_name varchar(255),
                 birthday date,
                 photo varchar(255),
+                bio varchar(2000),
                 primary key (user_id)
             );
             """

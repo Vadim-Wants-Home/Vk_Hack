@@ -10,6 +10,7 @@ from sql_scripts.sql_worker import SqlDatasetWorker
 from json_working.json_working import get_json_data
 # from api_handlers.user_create_handler import UserCreateHandler
 from api_handlers.tasks_handler import TasksRequestHandler
+from api_handlers.representatives_create_handler import RepresentativesCreateHandler
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -26,6 +27,7 @@ def make_app():
         (r'/api/shelters/(?P<id>[^/]+)', SheltersRequestHandler),
         (r'/api/users', UsersRequestHandler),
         (r'/api/users/(?P<id>[^/]+)', UsersRequestHandler),
+        (r'/api/representatives/create', RepresentativesCreateHandler)
     ])
 
 
