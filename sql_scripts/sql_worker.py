@@ -47,6 +47,7 @@ class SqlDatasetWorker:
                 birthday date,
                 photo varchar(255),
                 shelter_id int,
+                code int,
                 primary key (user_id),
                 foreign key (shelter_id) references shelters(id)
             );
@@ -109,8 +110,8 @@ class SqlDatasetWorker:
 
         conn.execute(
             """
-            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
-            (1, 'name', 'surname', '2018-09-09', 'photka.png', 1)
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id, code) VALUES 
+            (1, 'name', 'surname', '2018-09-09', 'photka.png', 1, 654321)
             """
         )
 
