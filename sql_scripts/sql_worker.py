@@ -47,7 +47,6 @@ class SqlDatasetWorker:
                 birthday date,
                 photo varchar(255),
                 shelter_id int,
-                code int,
                 primary key (user_id),
                 foreign key (shelter_id) references shelters(id)
             );
