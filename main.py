@@ -1,5 +1,6 @@
 import tornado.ioloop
 import tornado.web
+import logging
 import torndb
 import sys
 
@@ -37,6 +38,8 @@ if __name__ == "__main__":
     SqlDatasetWorker.uninstall()
     SqlDatasetWorker.install()
     SqlDatasetWorker.sample_data_insert()
+
+    logging.warn('server running correctly')
 
     app = make_app()
     app.listen(get_json_data('server.json')['port'])
