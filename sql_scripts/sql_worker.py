@@ -102,6 +102,23 @@ class SqlDatasetWorker:
         )
 
         conn.execute(
+            "insert into users("
+            "user_id, "
+            "first_name, "
+            "last_name, "
+            "birthday, "
+            "photo"
+            ") "
+            "values("
+            "181274867, "
+            "'vasilisa', "
+            "'lalal', "
+            "'19900519', "
+            "'user1.jpg'"
+            ")"
+        )
+
+        conn.execute(
             """
             insert into shelters (name, address, photo, site) VALUES 
             ('Yow', 'Saint Petersubtg 46, 2342/34', 'http://img.happy-giraffe.ru/v2/thumbs/e26e4ffdce15f4bc6711c767ffa68dac/69/03/e9ddc9480710e0d0eed71e0397bd.jpg', 'http://example.com');
@@ -140,6 +157,20 @@ class SqlDatasetWorker:
             1,
             1,
             765876894);
+            """
+        )
+
+        conn.execute(
+            """
+            insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
+            ('Task of Vasilisa', 
+            current_timestamp, 
+            0, 
+            'very very very very very very long desc desc desc desc of this task again',
+            181274867,
+            1,
+            1,
+            555555);
             """
         )
 
