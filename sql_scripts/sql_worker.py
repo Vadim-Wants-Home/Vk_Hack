@@ -350,13 +350,73 @@ class SqlDatasetWorker:
         insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES
             ('Third',
             current_timestamp,
-            6,
+            7,
             'very very very very very very long desc desc desc desc of this task',
             181274867,
             1,
             3,
             68265443);
         """)
+
+        conn.execute("""
+                insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES
+                    ('Third',
+                    current_timestamp,
+                    6,
+                    'very very very very very very long desc desc desc desc of this task',
+                    181274867,
+                    1,
+                    3,
+                    68265443);
+                """)
+
+        conn.execute("""
+                insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES
+                    ('Third',
+                    current_timestamp,
+                    5,
+                    'very very very very very very long desc desc desc desc of this task',
+                    181274867,
+                    1,
+                    3,
+                    68265443);
+                """)
+
+        conn.execute("""
+                insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES
+                    ('Third',
+                    "2020-08-31",
+                    4,
+                    'very very very very very very long desc desc desc desc of this task',
+                    181274867,
+                    1,
+                    3,
+                    68265443);
+                """)
+
+        conn.execute("""
+                insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES
+                    ('Third',
+                    "2020-08-31",
+                    3,
+                    'very very very very very very long desc desc desc desc of this task',
+                    181274867,
+                    1,
+                    3,
+                    68265443);
+                """)
+
+        conn.execute("""
+                insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES
+                    ('Third',
+                    "2020-08-31",
+                    2,
+                    'very very very very very very long desc desc desc desc of this task',
+                    181274867,
+                    1,
+                    3,
+                    68265443);
+                """)
 
         conn.execute("""
         insert into representative_codes(shelter_id, code) values (1, 111111)
