@@ -133,6 +133,23 @@ class SqlDatasetWorker:
         )
 
         conn.execute(
+            "insert into users("
+            "user_id, "
+            "first_name, "
+            "last_name, "
+            "birthday, "
+            "photo"
+            ") "
+            "values("
+            "188438066, "
+            "'vasilisa', "
+            "'lalal', "
+            "'19900519', "
+            "'user1.jpg'"
+            ")"
+        )
+
+        conn.execute(
             """
             insert into shelters (name, address, photo, site) VALUES 
             ('Гнездо', 'Дворцовая, 2', 'http://img.happy-giraffe.ru/v2/thumbs/e26e4ffdce15f4bc6711c767ffa68dac/69/03/e9ddc9480710e0d0eed71e0397bd.jpg', 'http://gnezdo.com');
@@ -280,7 +297,7 @@ class SqlDatasetWorker:
             current_timestamp, 
             0, 
             'very very very very very very long desc desc desc desc of this task',
-            1,
+            188438066,
             1,
             1,
             45678765);
@@ -294,7 +311,7 @@ class SqlDatasetWorker:
             current_timestamp, 
             0, 
             'very very very very very very long desc desc desc desc of this task',
-            1,
+            188438066,
             1,
             1,
             45678765);
@@ -308,7 +325,7 @@ class SqlDatasetWorker:
             current_timestamp, 
             0, 
             'very very very very very very long desc desc desc desc of this task again',
-            1,
+            181274867,
             1,
             2,
             765876894);
@@ -335,7 +352,7 @@ class SqlDatasetWorker:
             current_timestamp,
             0,
             'very very very very very very long desc desc desc desc of this task',
-            1,
+            181274867,
             1,
             3,
             68265443);
