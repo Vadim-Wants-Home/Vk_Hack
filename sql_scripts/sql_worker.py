@@ -248,7 +248,7 @@ class SqlDatasetWorker:
         conn.execute(
             """
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
-            ('Yow Task First', 
+            ('Помыть кошку Мусю', 
             current_timestamp, 
             0, 
             'very very very very very very long desc desc desc desc of this task',
@@ -262,13 +262,55 @@ class SqlDatasetWorker:
         conn.execute(
             """
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
-            ('Yow Second Task', 
+            ('Купить медикаменты песику Бобику', 
+            current_timestamp, 
+            0, 
+            'very very very very very very long desc desc desc desc of this task',
+            1,
+            1,
+            1,
+            45678765);
+            """
+        )
+
+        conn.execute(
+            """
+            insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
+            ('Покормить котика Васю', 
+            current_timestamp, 
+            0, 
+            'very very very very very very long desc desc desc desc of this task',
+            1,
+            1,
+            1,
+            45678765);
+            """
+        )
+
+        conn.execute(
+            """
+            insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
+            ('Выгулять пса Шарика', 
+            current_timestamp, 
+            0, 
+            'very very very very very very long desc desc desc desc of this task',
+            1,
+            1,
+            1,
+            45678765);
+            """
+        )
+
+        conn.execute(
+            """
+            insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
+            ('Сделать домик для кошки Маши', 
             current_timestamp, 
             0, 
             'very very very very very very long desc desc desc desc of this task again',
             1,
             1,
-            1,
+            2,
             765876894);
             """
         )
@@ -276,13 +318,13 @@ class SqlDatasetWorker:
         conn.execute(
             """
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
-            ('Task of Vasilisa', 
+            ('Перевязать лапку белочке', 
             current_timestamp, 
             0, 
             'very very very very very very long desc desc desc desc of this task again',
             181274867,
             1,
-            1,
+            2,
             555555);
             """
         )
@@ -295,11 +337,9 @@ class SqlDatasetWorker:
             'very very very very very very long desc desc desc desc of this task',
             1,
             1,
-            2,
+            3,
             68265443);
         """)
-
-
 
         conn.execute("""
         insert into representative_codes(shelter_id, code) values (1, 111111)
