@@ -135,7 +135,57 @@ class SqlDatasetWorker:
         conn.execute(
             """
             insert into shelters (name, address, photo, site) VALUES 
-            ('Гнездо', 'Дворцовая площадь, 2', 'http://img.happy-giraffe.ru/v2/thumbs/e26e4ffdce15f4bc6711c767ffa68dac/69/03/e9ddc9480710e0d0eed71e0397bd.jpg', 'http://example.com');
+            ('Гнездо', 'Дворцовая, 2', 'http://img.happy-giraffe.ru/v2/thumbs/e26e4ffdce15f4bc6711c767ffa68dac/69/03/e9ddc9480710e0d0eed71e0397bd.jpg', 'http://gnezdo.com');
+            """
+        )
+
+        conn.execute("""
+                    insert into shelters(name, address, photo, site)
+                    VALUES
+                    ('Надежда', 'Ботаническая, 66', 'https://www.w3schools.com/w3css/img_lights.jpg', 'nadezda.ru');
+                """
+                     )
+
+        conn.execute(
+            """
+            insert into shelters (name, address, photo, site) VALUES 
+            ('Солнышко', 'Гороховая, 5', 'https://cdn.fishki.net/upload/post/2017/03/19/2245758/tn/02-funny-cat-wallpapercat-wallpaper.jpg', 'http://priut_solnishko.com');
+            """
+        )
+
+        conn.execute(
+            """
+            insert into shelters (name, address, photo, site) VALUES 
+            ('Милый кот', 'Садовая, 12', 'https://humoraf.ru/wp-content/uploads/2017/08/23-14.jpg', 'mily_cat.ru');
+            """
+        )
+
+        conn.execute(
+            """
+            insert into shelters (name, address, photo, site) VALUES 
+            ('Дивный мир', 'Макарова, 130', 'http://bm.img.com.ua/img/prikol/images/large/0/0/307600.jpg', 'divny_world.ru');
+            """
+        )
+
+        conn.execute(
+            """
+            insert into shelters (name, address, photo, site) VALUES 
+            ('Уютный дом', 'Грибоедова, 15', 'https://bipbap.ru/wp-content/uploads/2017/10/0_8eb56_842bba74_XL-640x400.jpg', 'uyut.ru');
+            """
+        )
+
+
+        conn.execute(
+            """
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
+            (3, 'Bill', 'Gates', '2018-09-09', 'http://www.sncmedia.ru/upload/iblock/1bd/1bd85c62deedf241663b309d3790be17_w877_h500_crp.jpg', 1)
+            """
+        )
+
+        conn.execute(
+            """
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
+            (4, 'John', 'Doe', '2018-09-08', 'http://droplak.ru/wp-content/uploads/2016/04/3-8.jpg', 2)
             """
         )
 
@@ -149,7 +199,49 @@ class SqlDatasetWorker:
         conn.execute(
             """
             insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
-            (2, 'Муся', 'Кошка', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 1)
+            (2, 'Кошка', 'Муся', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 1)
+            """
+        )
+
+        conn.execute(
+            """
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
+            (5, 'Эдуард', 'Ерохин', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 4)
+            """
+        )
+
+        conn.execute(
+            """
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
+            (6, 'Мунира', 'Турсунова', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 3)
+            """
+        )
+
+        conn.execute(
+            """
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
+            (7, 'Игорь', 'Овсянов', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 3)
+            """
+        )
+
+        conn.execute(
+            """
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
+            (8, 'Руслан', 'Орехов', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 4)
+            """
+        )
+
+        conn.execute(
+            """
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
+            (9, 'Дуся', 'Котова', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 5)
+            """
+        )
+
+        conn.execute(
+            """
+            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
+            (10, 'Муся', 'Кошка', '2019-09-09', 'https://i.ytimg.com/vi/M-XtB0R3ri4/maxresdefault.jpg', 6)
             """
         )
 
@@ -195,14 +287,6 @@ class SqlDatasetWorker:
             """
         )
 
-
-        conn.execute("""
-            insert into shelters(name, address, photo, site)
-            VALUES
-            ('Надежда', 'Ботаническая, 66', 'https://www.w3schools.com/w3css/img_lights.jpg', 'asdf.ru');
-        """
-        )
-
         conn.execute("""
         insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES
             ('Third',
@@ -215,24 +299,29 @@ class SqlDatasetWorker:
             68265443);
         """)
 
-        conn.execute(
-            """
-            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
-            (3, 'Bill Gates', 'repro', '2018-09-09', 'http://www.sncmedia.ru/upload/iblock/1bd/1bd85c62deedf241663b309d3790be17_w877_h500_crp.jpg', 1)
-            """
-        )
 
-        conn.execute(
-            """
-            insert into representatives (user_id, first_name, last_name, birthday, photo, shelter_id) VALUES 
-            (4, 'John', 'Doe', '2018-09-08', 'http://droplak.ru/wp-content/uploads/2016/04/3-8.jpg', 2)
-            """
-        )
 
         conn.execute("""
         insert into representative_codes(shelter_id, code) values (1, 111111)
         """)
 
         conn.execute("""
-        insert into representative_codes(shelter_id, code) values (1, 111112)
+        insert into representative_codes(shelter_id, code) values (2, 111112)
         """)
+
+        conn.execute("""
+                insert into representative_codes(shelter_id, code) values (3, 111113)
+        """)
+
+        conn.execute("""
+                insert into representative_codes(shelter_id, code) values (4, 111114)
+                """)
+
+        conn.execute("""
+                insert into representative_codes(shelter_id, code) values (5, 111115)
+                """)
+
+
+        conn.execute("""
+                insert into representative_codes(shelter_id, code) values (6, 111116)
+                """)
