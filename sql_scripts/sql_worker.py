@@ -281,7 +281,7 @@ class SqlDatasetWorker:
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
             ('Купить медикаменты песику Бобику', 
             current_timestamp, 
-            0, 
+            1, 
             'very very very very very very long desc desc desc desc of this task',
             1,
             1,
@@ -295,7 +295,7 @@ class SqlDatasetWorker:
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
             ('Покормить котика Васю', 
             current_timestamp, 
-            0, 
+            2, 
             'very very very very very very long desc desc desc desc of this task',
             188438066,
             1,
@@ -309,7 +309,7 @@ class SqlDatasetWorker:
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
             ('Выгулять пса Шарика', 
             current_timestamp, 
-            0, 
+            3, 
             'very very very very very very long desc desc desc desc of this task',
             188438066,
             1,
@@ -323,7 +323,7 @@ class SqlDatasetWorker:
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
             ('Сделать домик для кошки Маши', 
             current_timestamp, 
-            0, 
+            4, 
             'very very very very very very long desc desc desc desc of this task again',
             181274867,
             1,
@@ -337,7 +337,7 @@ class SqlDatasetWorker:
             insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES 
             ('Перевязать лапку белочке', 
             current_timestamp, 
-            0, 
+            5, 
             'very very very very very very long desc desc desc desc of this task again',
             181274867,
             1,
@@ -350,7 +350,7 @@ class SqlDatasetWorker:
         insert into tasks (name, deadline, type, description, user_id, creator_id, shelter_id, done_key) VALUES
             ('Third',
             current_timestamp,
-            0,
+            6,
             'very very very very very very long desc desc desc desc of this task',
             181274867,
             1,
